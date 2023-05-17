@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class salaryEmployee {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double monthly_pay = 26000; // Total for 26 working days
+        double regular_Pay = 1000.0; // per day rate
+        double overtime_rate = 200.0; // overtime rate
+        double late_penalty = 300.0; // late deduct rate
+        double absent_penalty = 1000.0; // absent deduct rate
+        double overtime_Pay = 0.0;
+
+        System.out.print("Day/s absent: ");
+        int Absent_Days = sc.nextInt();
+
+        System.out.print("Hour/s late: ");
+        int Late_Days = sc.nextInt();
+
+        System.out.print("Hour/s OT: ");
+        int overtime_Hours = sc.nextInt();
+
+        double late_Total_Penalty = late_penalty * Late_Days; // formula for LATE per hour
+        double absent_Total_Penalty = absent_penalty * Absent_Days; // formula for ABSENT per day
+        overtime_Pay = overtime_rate * overtime_Hours; // formula for OVERTIME per Hour
+
+        double salary = regular_Pay + overtime_Pay - late_Total_Penalty - absent_Total_Penalty; // formula for per day SALARY
+
+        double monthly_salary = monthly_pay + overtime_Pay - late_Total_Penalty - absent_Total_Penalty; // formula for MONTHLY SALARY
+
+        System.out.println("\n================================================\n");
+        System.out.println("Total OT Rate: $" + overtime_Pay);
+        System.out.println("Total Late Penalty: $" + late_Total_Penalty);
+        System.out.println("Absent Penalty: $" + absent_Total_Penalty);
+        System.out.println("\nToday Salary: $" + salary);
+        System.out.println("Monthly Total Salary: $" + monthly_salary);
+    }
+}
